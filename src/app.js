@@ -31,7 +31,7 @@ const App = () => {
   }, []); // Empty dependency array helps to call this function only at the reload or start
 
   return (
-    <div classname="app">
+    <div className="app">
       <h1>MovieLand</h1>
       <div className="search">
         <input
@@ -41,9 +41,14 @@ const App = () => {
         />
         <img src={searchIcon} alt="Search" onClick={() => {}} />
       </div>
+      {/* <MovieCard movie1={movies[0]} /> 
+         Insted of showing just one moviecard we can use mapping 
+         .map iterates over eth in array  */}
       {movies.length > 0 ? (
         <div className="container">
-          <MovieCard movie1={movies[0]} />
+          {movies.map((movie) => (
+            <MovieCard movie={movie} />
+          ))}
         </div>
       ) : (
         <div className="empty">
