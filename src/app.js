@@ -4,6 +4,14 @@ import searchIcon from "./search.svg";
 // API_KEY = 22e1362
 const API_URL = "http://www.omdbapi.com?apikey=22e1362";
 
+// For static check copying one object from console
+const movie1 = {
+  Poster: "N/A",
+  Title: "Spiderman",
+  Type: "movie",
+  Year: "1990",
+  imdbID: "tt0100669",
+};
 // Main functional component
 const App = () => {
   // Async means it takes some time to fetch these movies
@@ -27,11 +35,28 @@ const App = () => {
           value="Fuck Man"
           onChange={() => {}}
         />
-        <img
-        src = {searchIcon}
-        alt="Search"
-        onClick={()=>{}}
-        />
+        <img src={searchIcon} alt="Search" onClick={() => {}} />
+      </div>
+      <div className="container">
+        <div className="movie">
+          <div>
+            <p>{movie1.Year}</p>
+          </div>
+          <div>
+            <img
+              src={
+                movie1.Poster !== "N/A"
+                  ? movie1.Poster
+                  : "https://via.placeholder.com/400"
+              }
+              alt={movie1.Title}
+            />
+          </div>
+          <div>
+            <span>{movie1.Type}</span>
+            <h3>{movie1.Title}</h3>
+          </div>
+        </div>
       </div>
     </div>
   );
