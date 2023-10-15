@@ -17,6 +17,7 @@ const API_URL = "http://www.omdbapi.com?apikey=22e1362";
 const App = () => {
   // Making a lot of moviecards or simply reusing moviecard component
   const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   // Async means it takes some time to fetch these movies
   const searchMovies = async (title) => {
     const response = await fetch(`${API_URL}&s=${title}`);
@@ -36,10 +37,14 @@ const App = () => {
       <div className="search">
         <input
           placeholder="Search for movies"
-          value="Fuck Man"
-          onChange={() => {}}
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <img src={searchIcon} alt="Search" onClick={() => {}} />
+        <img
+          src={searchIcon}
+          alt="Search"
+          onClick={() => searchMovies(searchTerm)}
+        />
       </div>
       {/* <MovieCard movie1={movies[0]} /> 
          Insted of showing just one moviecard we can use mapping 
